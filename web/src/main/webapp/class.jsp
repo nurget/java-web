@@ -31,7 +31,7 @@ while(rs.next()) {
 	<%=("<td>" + rs.getInt("CI_NUM") + "</td>")%>
 	<%=("<td>" + rs.getString("CI_NAME") + "</td>")%>
 	<%=("<td>" + rs.getString("CI_DESC") + "</td>")%>
-	<%=out.println("</tr>")%>
+	<%=("</tr>")%>
 <%
 }
 %>

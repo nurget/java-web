@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/include/header.jsp" />
 <%
 Class.forName("org.mariadb.jdbc.Driver");
 String url = "jdbc:mariadb://localhost:3306/kd";
@@ -31,7 +32,7 @@ ResultSet rs = stmt.executeQuery(sql); // rs는 메타데이터와 로우(실제
 <%
 while(rs.next()) {
 %>
-	<%=out.println("<tr>")%>
+	<%=("<tr>")%>
 	<%=("<td>" + rs.getInt("BI_NUM") + "</td>")%>
 	<%=("<td>" + rs.getString("BI_TITLE") + "</td>")%>
 	<%=("<td>" + rs.getString("BI_CONTENT") + "</td>")%>
@@ -46,9 +47,5 @@ while(rs.next()) {
 	<td colspan="6" align="center"><button>등록</button></td>
 </tr>
 </table>
-   
-   
-    
-                      n   nnn   
 </body>
 </html>
