@@ -1,3 +1,6 @@
+<%@page import="com.web.common.DBCon"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,6 +20,19 @@
 		out.println("uiId : " + uiId + "<br>");
 		out.println("uiPwd : " + uiPwd + "<br>");
 		out.println("uiName : " + uiName + "<br>");
+		Connection con = DBCon.getCon();
+		Statement stmt = con.createStatement(); // 사용자 입력에 따라 쿼리문이 달라지는 경우를 방지해야 함
+		String sql = "INSERT INTO USER_INFO(UI_ID, UI_PWD, UI_NAME)";
+		sql += " values('" + uiId + "', '" + uiPwd + "', '" + uiName + "')";
+		int result = stmt.executeUpdate(sql);
+		if(result==1){
+	%>
+	<script>
+		alert("<%=uiName%>님 회원가입에 성공하였습니다. 로그인을 해주세요.");
+		location.href="/web/login.jsp"
+	</script>
+	<%
+		}
 	}
 	%>
 	<form>
