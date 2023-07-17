@@ -14,7 +14,7 @@
 <body>
 	<jsp:include page="/include/header.jsp" />
 	<%
-	String uiNum = request.getParameter("UI_NUM");
+	String uiNum = request.getParameter("uiNum");
 
 	Connection con = DBCon.getCon();
 	Statement stmt = con.createStatement();

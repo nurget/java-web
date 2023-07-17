@@ -18,14 +18,13 @@
 
 	Connection con = DBCon.getCon();
 	Statement stmt = con.createStatement();
-	String sql = "SELECT CI_NUM, CI_NAME, CI_DESC FROM CLASS_INFO";
+	String sql = "SELECT CI_NUM, CI_NAME, CI_DESC FRON CI_INFO";
 	sql += " WHERE CI_NUM=" + ciNum;
 	ResultSet rs = stmt.executeQuery(sql);
-
 	if (!rs.next()) {
 	%>
 	<script>
-		alert('이미 삭제된 게시물입니다.');
+		alert('이미 삭제된 클래스입니다.');
 		history.back();
 	</script>
 	<%
@@ -33,18 +32,21 @@
 	}
 	String ciName = rs.getString("CI_NAME");
 	%>
-	<table border="1">
-		<tr>
-			<th>이름</th>
-			<td><%=rs.getString("CI_NAME") %></td>
-		</tr>
-		<tr>
-			<th>정보</th>
-			<td><%=rs.getString("CI_DESC") %></td>
-		</tr>
-		<tr>
-			<th><button>수정</button> <button>삭제</button></th>
-		</tr>
-	</table>
+	<form action="<%=root%>/class/class-update-ok.jsp">
+		<input type="hidden" name="ciNum" value="<%=ciNum%>">
+		<table border="1">
+			<tr>
+				<th>이름</th>
+				<td><input type="text" id="ciName" name="ciName"
+					value="<%=rs.getString("CI_NAME")%>"></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ciDesc" name="ciDesc" value="<%=rs.getString("CI_DESC") %>"> %></td>
+			</tr>
+			<tr>
+				<th colspan="2"><button onclick="location.href='<%=root%>/class/class-insert.jsp?ciNum=<%=ciNum%>'">수정</button></th>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>
