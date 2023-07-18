@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/include/common.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="/include/header.jsp" />
+<jsp:include page="/include/header.jsp"/>
 로그인 페이지
+<form method="POST">
+<input type="text" name="id"><br>
+<input type="password" name="pwd"><br>
+<button>로그인</button>
+</form>
 </body>
 </html>
