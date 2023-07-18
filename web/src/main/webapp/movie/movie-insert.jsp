@@ -20,9 +20,9 @@
 		String miDesc = request.getParameter("miDesc");
 		String miCredat = request.getParameter("miCredat");
 		String miCnt = request.getParameter("miCnt");
-		
+
 		Connection con = DBCon.getCon();
-		
+
 		String sql = "INSERT INTO MOVIE_INFO(MI_TITLE, MI_GENRE, MI_DESC, MI_CREDAT, MI_CNT)";
 		sql += " VALUES(?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -33,11 +33,14 @@
 		ps.setString(5, miCnt);
 		int result = ps.executeUpdate();
 		if (result == 1) {
-			out.print("<script>");
-			out.print("alert('정상적으로 등록되었습니다.');");
-			out.print("location.href='" + root + "/movie/movie-list.jsp';");
-			out.print("</script>");
-		}
+	%>
+
+	<script>
+		out.print("alert('정상적으로 등록되었습니다.');");
+		out.print("location.href='" + root + "/movie/movie-list.jsp';");
+	</script>
+	<%
+	}
 	}
 	%>
 

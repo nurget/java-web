@@ -1,6 +1,5 @@
-<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="com.web.common.DBCon"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -10,11 +9,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>영화 상세화면</title>
+<title>Insert title here</title>
 </head>
 <body>
 <jsp:include page="/include/header.jsp" />
-<h3>영화 상세 내용</h3>
 <%
 String miNum = request.getParameter("miNum");
 
@@ -37,19 +35,19 @@ String miTitle = rs.getString("MI_TITLE");
 %>
 <table border="1">
 	<tr>
-		<th>영화제목</th>
+		<th>영화 제목</th>
 		<td><%=rs.getString("MI_TITLE") %></td>
-	</tr>
-	<tr>
-		<th>설명</th>
-		<td><%=rs.getString("MI_DESC") %></td>
 	</tr>
 	<tr>
 		<th>장르</th>
 		<td><%=rs.getString("MI_GENRE") %></td>
 	</tr>
 	<tr>
-		<th>상영일</th>
+		<th>내용</th>
+		<td><%=rs.getString("MI_DESC") %></td>
+	</tr>
+	<tr>
+		<th>개봉일</th>
 		<td><%=rs.getString("MI_CREDAT") %></td>
 	</tr>
 	<tr>
@@ -60,6 +58,5 @@ String miTitle = rs.getString("MI_TITLE");
 		<th colspan="2"><button onclick="location.href='/web/movie2/movie-update.jsp?miNum=<%=miNum%>'">수정</button></th>
 	</tr>
 </table>
-
 </body>
 </html>
